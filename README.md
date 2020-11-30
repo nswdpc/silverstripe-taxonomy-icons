@@ -30,7 +30,7 @@ In the administration screen a CMS editor can:
 The recommended way of installing this module is via [composer](https://getcomposer.org/download/)
 
 ```
-composer require nswdpc/silverstripe-taxonomy-icon
+composer require nswdpc/silverstripe-taxonomy-icons
 ```
 
 ## License

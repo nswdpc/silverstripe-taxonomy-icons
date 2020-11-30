@@ -2,6 +2,7 @@
 
 namespace NSWDPC\Taxonomy;
 
+use SilverStripe\Assets\Image;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\CompositeField;
@@ -12,7 +13,7 @@ use SilverStripe\Taxonomy\TaxonomyTerm;
 /**
  * Decorate {@link SilverStripe\Taxonomy\TaxonomyTerm} with an upload field,
  * a file name or a CSS class, field selection depends on configuration
- *
+ * @author James
  */
 class TaxonomyIconExtension extends DataExtension {
 
@@ -24,6 +25,26 @@ class TaxonomyIconExtension extends DataExtension {
     private static $has_one = [
         'TaxonomyIcon' => Image::class,
     ];
+
+    /**
+     * Mark ownership of TaxonomyTerm.TaxonomyIcon
+    */
+    private static $owns = [
+        'TaxonomyIcon'
+    ];
+
+    public function updateSummaryFields(&$fields) {
+        if(!is_array($fields)) {
+            return;
+        }
+        if($this->owner->config()->get('is_upload')) {
+            $fields = array_merge([ 'TaxonomyIcon.CMSThumbnail' => 'Icon'], $fields);
+        } else if( $this->owner->config()->get('is_css')) {
+            $fields = array_merge($fields, [ 'TaxonomyIconCssClass' => 'Icon']);
+        } else if($this->owner->config()->get('is_filename') && $this->owner->config()->get('filename_path')) {
+            $fields = array_merge($fields, [ 'TaxonomyIconFileName' => 'Icon']);
+        }
+    }
 
     public function updateCMSFields(FieldList $fields)
     {
@@ -39,11 +60,12 @@ class TaxonomyIconExtension extends DataExtension {
         } else if($field = $this->owner->getIconFilenameField()) {
             $description = _t(
                 __CLASS__ . ".ICON_FILE_PATH_LOCATION",
-                "Icons are currently stored in {path}",
+                "<span><span>The current icon location is</span> <code>{path}</code></span>",
                 [
                     'path' => $this->owner->config()->get('filename_path')
                 ]
             );
+            $field->setDescription($description);
             $fields->addFieldsToTab('Root.Main', $field);
         }
     }
@@ -93,7 +115,7 @@ class TaxonomyIconExtension extends DataExtension {
         $field = null;
         if( $this->owner->config()->get('is_css')) {
             $field = TextField::create(
-                'TaxonomyIconName',
+                'TaxonomyIconCssClass',
                 _t(
                     __CLASS__ . ".ICON_NAME",
                     "Icon CSS class name or file name e.g 'icon-accessible'"

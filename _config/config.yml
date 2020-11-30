@@ -1,0 +1,8 @@
+---
+Name: nswdpc-taxonomy-icon
+---
+SilverStripe\Taxonomy\TaxonomyTerm:
+  is_upload: true
+  is_css: true
+  is_filename: false
+  filename_path: ''

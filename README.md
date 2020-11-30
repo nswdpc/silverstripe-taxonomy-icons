@@ -1,6 +1,6 @@
-# Taxonomy icon support for Silverstripe taxonomy settings
+# Icon support for Silverstripe taxonomy terms
 
-Upload a png or webp icon to a taxonomy term and/or assign either a CSS class name/filename to the term
+Upload an icon, assign a CSS class name or filename to a taxonomy term
 
 ## Configuration
 

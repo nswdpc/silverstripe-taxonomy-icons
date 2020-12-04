@@ -132,7 +132,7 @@ class TaxonomyIconExtension extends DataExtension {
     public function getIconPath() : string {
         $path = "";
         if($this->owner->config()->get('is_upload')) {
-            $icon = $this->TaxonomyIcon();
+            $icon = $this->owner->TaxonomyIcon();
             if($icon && $icon->exists()) {
                 $path = $icon->AbsoluteLink();
             }

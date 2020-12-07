@@ -46,6 +46,12 @@ class TaxonomyIconExtension extends DataExtension {
         }
     }
 
+    public function updateSearchableFields(&$fields) {
+        unset($fields['TaxonomyIcon.CMSThumbnail']);
+        unset($fields['TaxonomyIconCssClass']);
+        unset($fields['TaxonomyIconFileName']);
+    }
+
     public function updateCMSFields(FieldList $fields)
     {
 

@@ -17,22 +17,32 @@ use SilverStripe\Taxonomy\TaxonomyTerm;
  */
 class TaxonomyIconExtension extends DataExtension {
 
+    /**
+     * @inheritdoc
+     */
     private static $db = [
         'TaxonomyIconFileName' => 'Varchar(255)',
         'TaxonomyIconCssClass' => 'Varchar(255)',
     ];
 
+    /**
+     * @inheritdoc
+     */
     private static $has_one = [
         'TaxonomyIcon' => Image::class,
     ];
 
     /**
+     * @inheritdoc
      * Mark ownership of TaxonomyTerm.TaxonomyIcon
-    */
+     */
     private static $owns = [
         'TaxonomyIcon'
     ];
 
+    /**
+     * @inheritdoc
+     */
     public function updateSummaryFields(&$fields) {
         if(!is_array($fields)) {
             return;
@@ -46,12 +56,18 @@ class TaxonomyIconExtension extends DataExtension {
         }
     }
 
+    /**
+     * @inheritdoc
+     */
     public function updateSearchableFields(&$fields) {
         unset($fields['TaxonomyIcon.CMSThumbnail']);
         unset($fields['TaxonomyIconCssClass']);
         unset($fields['TaxonomyIconFileName']);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function updateCMSFields(FieldList $fields)
     {
 

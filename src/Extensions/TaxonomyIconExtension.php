@@ -95,7 +95,7 @@ class TaxonomyIconExtension extends DataExtension {
     /**
      * @return null|UploadField
      */
-    public function getIconUploadField() {
+    public function getIconUploadField() : ?UploadField {
         $field = null;
         if($this->owner->config()->get('is_upload')) {
             $field = UploadField::create(
@@ -116,7 +116,7 @@ class TaxonomyIconExtension extends DataExtension {
     /**
      * @return null|TextField
      */
-    public function getIconFilenameField() {
+    public function getIconFilenameField() : ?TextField {
         $field = null;
         if( $this->owner->config()->get('is_filename') && $this->owner->config()->get('filename_path') ) {
             $field = TextField::create(
@@ -133,7 +133,7 @@ class TaxonomyIconExtension extends DataExtension {
     /**
      * @return null|TextField
      */
-    public function getIconCssClassField() {
+    public function getIconCssClassField() : ?TextField {
         $field = null;
         if( $this->owner->config()->get('is_css')) {
             $field = TextField::create(

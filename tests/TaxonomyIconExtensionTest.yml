@@ -1,0 +1,12 @@
+SilverStripe\Taxonomy\TaxonomyTerm:
+  is_upload:
+    Name: 'is upload'
+    Sort: 0
+  is_css:
+    Name: 'is css'
+    Sort: 1
+    TaxonomyIconCssClass: 'hamburger'
+  is_filename:
+    Name: 'is filename'
+    Sort: 2
+    TaxonomyIconFileName: 'myicon'

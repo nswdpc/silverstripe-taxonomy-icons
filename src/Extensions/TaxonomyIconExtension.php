@@ -4,6 +4,7 @@ namespace NSWDPC\Taxonomy;
 
 use SilverStripe\Assets\Image;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Control\Director;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\TextField;
@@ -160,9 +161,9 @@ class TaxonomyIconExtension extends DataExtension {
             }
         } else if($this->owner->config()->get('is_filename')
             && $this->owner->config()->get('filename_path')) {
-            $path = trim($this->owner->config()->get('filename_path'). "/")
+            $path = trim($this->owner->config()->get('filename_path'), "/")
                     . "/"
-                    . $this->TaxonomyIconFileName;
+                    . $this->owner->TaxonomyIconFileName;
             $path = Director::absoluteURL($path);
         }
         return $path;

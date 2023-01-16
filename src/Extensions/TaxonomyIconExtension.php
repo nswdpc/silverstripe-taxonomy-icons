@@ -18,22 +18,32 @@ use SilverStripe\Taxonomy\TaxonomyTerm;
  */
 class TaxonomyIconExtension extends DataExtension {
 
+    /**
+     * @inheritdoc
+     */
     private static $db = [
         'TaxonomyIconFileName' => 'Varchar(255)',
         'TaxonomyIconCssClass' => 'Varchar(255)',
     ];
 
+    /**
+     * @inheritdoc
+     */
     private static $has_one = [
         'TaxonomyIcon' => Image::class,
     ];
 
     /**
+     * @inheritdoc
      * Mark ownership of TaxonomyTerm.TaxonomyIcon
-    */
+     */
     private static $owns = [
         'TaxonomyIcon'
     ];
 
+    /**
+     * @inheritdoc
+     */
     public function updateSummaryFields(&$fields) {
         if(!is_array($fields)) {
             return;
@@ -47,12 +57,18 @@ class TaxonomyIconExtension extends DataExtension {
         }
     }
 
+    /**
+     * @inheritdoc
+     */
     public function updateSearchableFields(&$fields) {
         unset($fields['TaxonomyIcon.CMSThumbnail']);
         unset($fields['TaxonomyIconCssClass']);
         unset($fields['TaxonomyIconFileName']);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function updateCMSFields(FieldList $fields)
     {
 
@@ -80,7 +96,7 @@ class TaxonomyIconExtension extends DataExtension {
     /**
      * @return null|UploadField
      */
-    public function getIconUploadField() {
+    public function getIconUploadField() : ?UploadField {
         $field = null;
         if($this->owner->config()->get('is_upload')) {
             $field = UploadField::create(
@@ -101,7 +117,7 @@ class TaxonomyIconExtension extends DataExtension {
     /**
      * @return null|TextField
      */
-    public function getIconFilenameField() {
+    public function getIconFilenameField() : ?TextField {
         $field = null;
         if( $this->owner->config()->get('is_filename') && $this->owner->config()->get('filename_path') ) {
             $field = TextField::create(
@@ -118,7 +134,7 @@ class TaxonomyIconExtension extends DataExtension {
     /**
      * @return null|TextField
      */
-    public function getIconCssClassField() {
+    public function getIconCssClassField() : ?TextField {
         $field = null;
         if( $this->owner->config()->get('is_css')) {
             $field = TextField::create(

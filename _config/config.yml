@@ -5,6 +5,6 @@ SilverStripe\Taxonomy\TaxonomyTerm:
   is_upload: true
   is_css: false
   is_filename: false
-  filename_path: 'themes/theme-australiaday/app/static/icons/'
+  filename_path: ''
   extensions:
     - 'NSWDPC\Taxonomy\Extensions\TaxonomyIconExtension'

@@ -1,6 +1,6 @@
 <?php
 
-namespace NSWDPC\Taxonomy;
+namespace NSWDPC\Taxonomy\Extensions;
 
 use SilverStripe\Assets\Image;
 use SilverStripe\AssetAdmin\Forms\UploadField;

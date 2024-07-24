@@ -14,9 +14,7 @@
     "license": "BSD-3-Clause",
     "authors": [
         {
-            "name": "James",
-            "email": "james.ellis@dpc.nsw.gov.au",
-            "homepage": "https://dpc.nsw.gov.au"
+            "name": "James"
         }
     ],
     "require": {

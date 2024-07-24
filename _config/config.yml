@@ -7,4 +7,4 @@ SilverStripe\Taxonomy\TaxonomyTerm:
   is_filename: false
   filename_path: 'themes/theme-australiaday/app/static/icons/'
   extensions:
-    - 'NSWDPC\Taxonomy\TaxonomyIconExtension'
+    - 'NSWDPC\Taxonomy\Extensions\TaxonomyIconExtension'

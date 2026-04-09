@@ -8,7 +8,9 @@ Site configuration by your developer/site owner can be done as follows:
 
 ```yaml
 ---
-Name: nswdpc-taxonomy-icon
+Name: 'app-taxonomy-icon'
+After:
+    - '#nswdpc-taxonomy-icon'
 ---
 SilverStripe\Taxonomy\TaxonomyTerm:
   is_upload: true
@@ -24,6 +26,16 @@ In the administration screen a CMS editor can:
 1. Upload an icon OR
 1. Enter a CSS class name OR
 1. Enter a filename for an icon, which will be relative to the configured icon file path
+
+## Usage
+
+Your project should render the term icon via a project theme template. Example:
+
+```html
+<% with $Term %>
+<div class="list tags"><span class="tag"><span aria-hidden="true">{$TaxonomyIconCssClass}</span> <span>{$Name}</span></span></p>
+<% end_with %>
+```
 
 ## Requirements
 

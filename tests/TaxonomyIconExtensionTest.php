@@ -30,7 +30,7 @@ class TaxonomyIconExtensionTest extends SapphireTest {
     /**
      * Assert icon handling
      */
-    public function testTaxonomyIconIsUpload() {
+    public function testTaxonomyIconIsUpload(): void {
 
         Config::modify()->set( TaxonomyTerm::class, 'is_upload', true);
         Config::modify()->set( TaxonomyTerm::class, 'is_css', false);
@@ -52,7 +52,7 @@ class TaxonomyIconExtensionTest extends SapphireTest {
     /**
      * Assert CSS handling
      */
-    public function testTaxonomyIconIsCss() {
+    public function testTaxonomyIconIsCss(): void {
 
         Config::modify()->set( TaxonomyTerm::class, 'is_upload', false);
         Config::modify()->set( TaxonomyTerm::class, 'is_css', true);
@@ -74,7 +74,7 @@ class TaxonomyIconExtensionTest extends SapphireTest {
     /**
      * Assert Upload handling
      */
-    public function testTaxonomyIconIsFilename() {
+    public function testTaxonomyIconIsFilename(): void {
 
         Config::modify()->set( TaxonomyTerm::class, 'is_upload', false);
         Config::modify()->set( TaxonomyTerm::class, 'is_css', false);

@@ -44,7 +44,7 @@ composer require nswdpc/silverstripe-taxonomy-icons
 
 ## Maintainers
 
-+ [dpcdigital@NSWDPC:~$](https://dpc.nsw.gov.au)
+PD Web Team
 
 > Add additional maintainers here and/or include [authors in composer](https://getcomposer.org/doc/04-schema.md#authors)
 

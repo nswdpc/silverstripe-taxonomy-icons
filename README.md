@@ -46,8 +46,6 @@ composer require nswdpc/silverstripe-taxonomy-icons
 
 PD Web Team
 
-> Add additional maintainers here and/or include [authors in composer](https://getcomposer.org/doc/04-schema.md#authors)
-
 ## Bugtracker
 
 We welcome bug reports, pull requests and feature requests on the Github Issue tracker for this project.

@@ -6,7 +6,6 @@ use SilverStripe\Assets\Image;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Control\Director;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Taxonomy\TaxonomyTerm;
@@ -21,8 +20,8 @@ use SilverStripe\Taxonomy\TaxonomyTerm;
  * @method \SilverStripe\Assets\Image TaxonomyIcon()
  * @extends \SilverStripe\ORM\DataExtension<(\SilverStripe\Taxonomy\TaxonomyTerm & static)>
  */
-class TaxonomyIconExtension extends DataExtension {
-
+class TaxonomyIconExtension extends DataExtension
+{
     /**
      * @inheritdoc
      */
@@ -50,8 +49,9 @@ class TaxonomyIconExtension extends DataExtension {
      * @inheritdoc
      */
     #[\Override]
-    public function updateSummaryFields(&$fields) {
-        if(!is_array($fields)) {
+    public function updateSummaryFields(&$fields)
+    {
+        if (!is_array($fields)) {
             return;
         }
 
@@ -67,7 +67,8 @@ class TaxonomyIconExtension extends DataExtension {
     /**
      * @inheritdoc
      */
-    public function updateSearchableFields(array &$fields) {
+    public function updateSearchableFields(array &$fields)
+    {
         unset($fields['TaxonomyIcon.CMSThumbnail']);
         unset($fields['TaxonomyIconCssClass']);
         unset($fields['TaxonomyIconFileName']);
@@ -100,9 +101,10 @@ class TaxonomyIconExtension extends DataExtension {
         }
     }
 
-    public function getIconUploadField() : ?UploadField {
+    public function getIconUploadField(): ?UploadField
+    {
         $field = null;
-        if($this->getOwner()->config()->get('is_upload')) {
+        if ($this->getOwner()->config()->get('is_upload')) {
             $field = UploadField::create(
                 'TaxonomyIcon',
                 _t(
@@ -119,9 +121,10 @@ class TaxonomyIconExtension extends DataExtension {
         return $field;
     }
 
-    public function getIconFilenameField() : ?TextField {
+    public function getIconFilenameField(): ?TextField
+    {
         $field = null;
-        if( $this->getOwner()->config()->get('is_filename') && $this->getOwner()->config()->get('filename_path') ) {
+        if ($this->getOwner()->config()->get('is_filename') && $this->getOwner()->config()->get('filename_path')) {
             $field = TextField::create(
                 'TaxonomyIconFileName',
                 _t(
@@ -134,9 +137,10 @@ class TaxonomyIconExtension extends DataExtension {
         return $field;
     }
 
-    public function getIconCssClassField() : ?TextField {
+    public function getIconCssClassField(): ?TextField
+    {
         $field = null;
-        if( $this->getOwner()->config()->get('is_css')) {
+        if ($this->getOwner()->config()->get('is_css')) {
             $field = TextField::create(
                 'TaxonomyIconCssClass',
                 _t(
@@ -152,11 +156,12 @@ class TaxonomyIconExtension extends DataExtension {
     /**
      * Return the icon absolute path. It will be either the path to the upload or the path to the file name
      */
-    public function getIconPath() : string {
+    public function getIconPath(): string
+    {
         $path = "";
         if ($this->getOwner()->config()->get('is_upload')) {
             $icon = $this->getOwner()->TaxonomyIcon();
-            if($icon && $icon->exists()) {
+            if ($icon && $icon->exists()) {
                 $path = $icon->AbsoluteLink();
             }
         } elseif ($this->getOwner()->config()->get('is_filename')

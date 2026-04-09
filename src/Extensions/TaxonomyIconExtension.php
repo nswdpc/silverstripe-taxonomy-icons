@@ -7,7 +7,7 @@ use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Control\Director;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 use SilverStripe\Taxonomy\TaxonomyTerm;
 
 /**
@@ -18,9 +18,9 @@ use SilverStripe\Taxonomy\TaxonomyTerm;
  * @property ?string $TaxonomyIconCssClass
  * @property int $TaxonomyIconID
  * @method \SilverStripe\Assets\Image TaxonomyIcon()
- * @extends \SilverStripe\ORM\DataExtension<(\SilverStripe\Taxonomy\TaxonomyTerm & static)>
+ * @extends \SilverStripe\Core\Extension<(\SilverStripe\Taxonomy\TaxonomyTerm & static)>
  */
-class TaxonomyIconExtension extends DataExtension
+class TaxonomyIconExtension extends Extension
 {
     /**
      * @inheritdoc
@@ -48,7 +48,6 @@ class TaxonomyIconExtension extends DataExtension
     /**
      * @inheritdoc
      */
-    #[\Override]
     public function updateSummaryFields(&$fields)
     {
         if (!is_array($fields)) {

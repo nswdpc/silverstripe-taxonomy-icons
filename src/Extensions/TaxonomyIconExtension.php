@@ -93,7 +93,7 @@ class TaxonomyIconExtension extends DataExtension
                 self::class . ".ICON_FILE_PATH_LOCATION",
                 "<span><span>The current icon location is</span> <code>{path}</code></span>",
                 [
-                    'path' => htmlspecialchars($this->getOwner()->config()->get('filename_path'))
+                    'path' => htmlspecialchars((string) $this->getOwner()->config()->get('filename_path'))
                 ]
             );
             $field->setDescription($description);

@@ -85,9 +85,9 @@ class TaxonomyIconExtension extends DataExtension
         ]);
 
         if ($field = $this->getOwner()->getIconUploadField()) {
-            $fields->addFieldsToTab('Root.Main', $field);
+            $fields->addFieldToTab('Root.Main', $field);
         } elseif ($field = $this->getOwner()->getIconCssClassField()) {
-            $fields->addFieldsToTab('Root.Main', $field);
+            $fields->addFieldToTab('Root.Main', $field);
         } elseif ($field = $this->getOwner()->getIconFilenameField()) {
             $description = _t(
                 self::class . ".ICON_FILE_PATH_LOCATION",
@@ -97,7 +97,7 @@ class TaxonomyIconExtension extends DataExtension
                 ]
             );
             $field->setDescription($description);
-            $fields->addFieldsToTab('Root.Main', $field);
+            $fields->addFieldToTab('Root.Main', $field);
         }
     }
 
